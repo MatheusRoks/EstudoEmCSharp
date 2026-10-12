@@ -19,6 +19,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 2 - Interpolation");
                 Console.WriteLine(" 3 - Conversion");
                 Console.WriteLine(" 4 - DataInput");
+                Console.WriteLine("5 - FirstExerc");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair"|| className == "0")
@@ -38,6 +39,9 @@ namespace EstudoEmCSharp
                         break;
                     case "4":
                         DataInput dataInput = new DataInput();
+                        break;
+                    case "5":
+                        FirstExerc firstExerc = new FirstExerc();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");

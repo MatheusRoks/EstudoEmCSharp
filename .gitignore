@@ -1,0 +1,14 @@
+# Build 
+[Bb]in/
+[Oo]bj/
+
+#Visuaul Studio
+.vs/
+*.user
+*.suo
+
+#NuGet
+packeges/
+
+#Logs
+*.log
