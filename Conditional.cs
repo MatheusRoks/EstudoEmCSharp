@@ -8,7 +8,7 @@ namespace EstudoEmCSharp
     {
         public Conditional()
         {
-            while true
+            while (true)
             {
                 string option;
                 int firstNumber;
@@ -65,18 +65,19 @@ namespace EstudoEmCSharp
                         bool maior = firstNumber >= secondNumber;
                         if (maior)
                         {
-                            if (secondNumber% firstNumber == 0 )
+                            if (secondNumber % firstNumber == 0)
                             {
                                 Console.WriteLine($"O {secondNumber} e o {firstNumber} são multiplos ");
-                            
+
                             }
                             else
                             {
                                 Console.WriteLine($"O {secondNumber} e o {firstNumber} não são multiplos ");
                             }
+                        }
                         else
                         {
-                            if ( firstNumber%secondNumber == 0)
+                            if (firstNumber % secondNumber == 0)
                             {
                                 Console.WriteLine($"O {firstNumber} e o {secondNumber} são multiplos ");
                             }
@@ -84,7 +85,7 @@ namespace EstudoEmCSharp
                             {
                                 Console.WriteLine($"O {firstNumber} e o {secondNumber} não são multiplos ");
                             }
-                            }
+                        }
                         break;
                     default:
                         Console.WriteLine("Opção inválida.");
