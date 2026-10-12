@@ -25,8 +25,11 @@ namespace EstudoEmCSharp
             double hourPrice;
             double radius;
             const double pi = 3.14159;
+            double firstData;
+            double secondData;
+            double thirdData;
 
-            
+
 
 
 
@@ -75,6 +78,27 @@ namespace EstudoEmCSharp
             double sumItens = (firstItemQuantity * firstItemPrice) + (secondItemQuantity * secondItemPrice);
             Console.WriteLine($"The total value to pay is: {sumItens:F2}");
             Console.WriteLine(separator);
+            Console.WriteLine("Lets calculate the shape's area");
+            Console.WriteLine("Insert three numbers separated by space: ");
+            string[] datas = Console.ReadLine().Split(' ');
+            firstData = double.Parse(datas[0]);
+            secondData = double.Parse(datas[1]);
+            thirdData = double.Parse(datas[2]);
+            Console.WriteLine("Triangle area: ");
+            double triangleArea = (firstData * thirdData) / 2;
+            Console.WriteLine($"{triangleArea:F3}");
+            Console.WriteLine("Area of a circle: ");
+            double circleArea = pi * Math.Pow(thirdData, 2);
+            Console.WriteLine($"{circleArea:F3}");
+            Console.WriteLine("Area of a trapezoid: ");
+            double trapezoidArea = ((firstData + secondData) * thirdData) / 2;
+            Console.WriteLine($"{trapezoidArea:F3}");
+            Console.WriteLine("Area of a square: ");
+            double squareArea = Math.Pow(secondData, 2);
+            Console.WriteLine($"{squareArea:F3}");
+            Console.WriteLine("Area of a rectangle: ");
+            double rectangleArea = firstData * secondData;
+            Console.WriteLine($"{rectangleArea:F3}");
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
         }
