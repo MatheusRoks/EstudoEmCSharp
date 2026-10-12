@@ -19,7 +19,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 2 - Interpolation");
                 Console.WriteLine(" 3 - Conversion");
                 Console.WriteLine(" 4 - DataInput");
-                Console.WriteLine("5 - FirstExerc");
+                Console.WriteLine(" 5 - FirstExerc");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair"|| className == "0")
