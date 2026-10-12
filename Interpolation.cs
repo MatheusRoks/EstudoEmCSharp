@@ -34,7 +34,8 @@ namespace EstudoEmCSharp
                 "Measure with 3 decimal places and invariant culture: " + measure.ToString("F3", CultureInfo.InvariantCulture));
             Console.WriteLine(separator);
             Console.WriteLine();
-
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }

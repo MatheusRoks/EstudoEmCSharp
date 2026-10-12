@@ -12,12 +12,15 @@ namespace EstudoEmCSharp
 
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("Digite o nome da classe que deseja executar):");
                 Console.WriteLine(" 0 ou 'sair' para encerrar o programa.");
                 Console.WriteLine(" 1 - AssingmentOperators");
                 Console.WriteLine(" 2 - Interpolation");
                 Console.WriteLine(" 3 - Conversion");
+                Console.WriteLine(" 4 - DataInput");
                 string className = Console.ReadLine();
+                Console.Clear();
                 if (className.ToLower() == "sair"|| className == "0")
                 {
                     break;
@@ -32,6 +35,9 @@ namespace EstudoEmCSharp
                         break;
                     case "3":
                         Conversion conversion = new Conversion();
+                        break;
+                    case "4":
+                        DataInput dataInput = new DataInput();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");

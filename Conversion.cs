@@ -33,6 +33,8 @@ namespace EstudoEmCSharp
             Console.WriteLine("now making a cast");
             double result = (double)a / b;
             Console.WriteLine($"a/b with cast = {result}");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }

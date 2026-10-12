@@ -38,6 +38,8 @@ namespace EstudoEmCSharp
             Console.WriteLine($"number3 with number2++: {number3}");
             Console.WriteLine($"number4 with ++number2: {number4}");
             Console.WriteLine(separator);
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
 
         }
     }
