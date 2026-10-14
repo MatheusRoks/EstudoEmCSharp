@@ -20,6 +20,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 3 - Conversion");
                 Console.WriteLine(" 4 - DataInput");
                 Console.WriteLine(" 5 - FirstExerc");
+                Console.WriteLine(" 6 - Conditionals");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair"|| className == "0")
@@ -42,6 +43,9 @@ namespace EstudoEmCSharp
                         break;
                     case "5":
                         FirstExerc firstExerc = new FirstExerc();
+                        break;
+                    case "6":
+                        Conditional conditional = new Conditional();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
