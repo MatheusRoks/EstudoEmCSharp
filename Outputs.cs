@@ -21,6 +21,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 4 - DataInput");
                 Console.WriteLine(" 5 - FirstExerc");
                 Console.WriteLine(" 6 - Conditionals");
+                Console.WriteLine(" 7 - WhileExerc");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair"|| className == "0")
@@ -46,6 +47,9 @@ namespace EstudoEmCSharp
                         break;
                     case "6":
                         Conditional conditional = new Conditional();
+                        break;
+                    case "7":
+                        WhileExerc whileExerc = new WhileExerc();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
