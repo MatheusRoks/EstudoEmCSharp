@@ -21,6 +21,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine("4 - divisão");
                 Console.WriteLine("5 - Fatorial");
                 Console.WriteLine("6 - Divisores");
+                Console.WriteLine("7 - quadrado e cubo");
                 choose = Console.ReadLine();
 
                 if (choose == "0")
@@ -153,6 +154,19 @@ namespace EstudoEmCSharp
                             }
                         }
                         break;
+                    case "7":
+                        int escolha2;
+                        Console.WriteLine("Digite um número: ");
+                        escolha2 = int.Parse(Console.ReadLine());
+                        for (int i = 1; i<=escolha2; i++)
+                        {
+                            Console.WriteLine($"{i} {i * i} {Math.Pow(i, 3)}");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine($"Npuemro '{choose}' não encontrado.");
+                        break;
+
                 }
             }
         }
