@@ -19,6 +19,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine("2 - intervalo");
                 Console.WriteLine("3 - Média ponderada");
                 Console.WriteLine("4 - divisão");
+                Console.WriteLine("5 - Fatorial");
                 choose = Console.ReadLine();
 
                 if (choose == "0")
@@ -110,7 +111,7 @@ namespace EstudoEmCSharp
                         Console.WriteLine("Digite quantas vezes iremos exibir");
                         vezes = int.Parse(Console.ReadLine());
 
-                        for (int i = 0; i<=vezes; i++)
+                        for (int i = 1; i<=vezes; i++)
                         {
                             Console.WriteLine($"Digite a {i}ª divisão, com espaço separqando o numerador do divisor: ");
                             pares = Console.ReadLine().Split(' ');
@@ -127,6 +128,17 @@ namespace EstudoEmCSharp
                             }
 
                         }
+                        break;
+                    case "5":
+                        double numeroFat;
+                        double resultado3 = 1;
+                        Console.WriteLine("Digite um número: ");
+                        numeroFat = int.Parse(Console.ReadLine());
+                        for (double i = numeroFat; i>0; i--)
+                        {
+                            resultado3 = resultado3 * i;
+                        }
+                        Console.WriteLine($"O fatorial de {numeroFat} é {resultado3}");
                         break;
                 }
             }
