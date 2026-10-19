@@ -20,6 +20,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine("3 - Média ponderada");
                 Console.WriteLine("4 - divisão");
                 Console.WriteLine("5 - Fatorial");
+                Console.WriteLine("6 - Divisores");
                 choose = Console.ReadLine();
 
                 if (choose == "0")
@@ -139,6 +140,18 @@ namespace EstudoEmCSharp
                             resultado3 = resultado3 * i;
                         }
                         Console.WriteLine($"O fatorial de {numeroFat} é {resultado3}");
+                        break;
+                    case "6":
+                        int divisor;
+                        Console.WriteLine("Digite um númeroe e mostraremos os divisores");
+                        divisor = int.Parse(Console.ReadLine());
+                        for (int i = 1; i<=divisor; i++)
+                        {
+                            if (divisor % i == 0)
+                            {
+                                Console.WriteLine($"O {i} é um divisor de {divisor}");
+                            }
+                        }
                         break;
                 }
             }
