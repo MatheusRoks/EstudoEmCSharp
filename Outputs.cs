@@ -25,6 +25,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 8 - ForClass");
                 Console.WriteLine(" 9 - Pessoa");
                 Console.WriteLine(" 10 - Salario");
+                Console.WriteLine(" 11 - Produto");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair"|| className == "0")
@@ -104,6 +105,25 @@ namespace EstudoEmCSharp
                         media = (x2.salary + y2.salary) / 2;
                         Console.WriteLine($"A média salarial é de {media:F2}");
                         Console.ReadLine();
+                        break;
+                    case "11":
+                        Product product = new Product();
+                        Console.WriteLine("Entre com os dados do produto");
+                        Console.Write("Nome: ");
+                        product.Name = Console.ReadLine();
+                        Console.Write("Preço: ");
+                        product.Price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.Write("Quantidade: ");
+                        product.Amount = int.Parse(Console.ReadLine());
+                        Console.WriteLine(product);
+                        Console.Write("Insina a quantidade de produtos a serem adicionados: ");
+                        product.Adicionar( int.Parse(Console.ReadLine()));
+                        Console.WriteLine(product);
+                        Console.Write("Insina a quantidade de produtos a serem removidos: ");
+                        product.Adicionar(int.Parse(Console.ReadLine()));
+                        Console.WriteLine(product);
+
+                        Console.Read();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
