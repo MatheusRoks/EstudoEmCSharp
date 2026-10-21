@@ -27,6 +27,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 10 - Salario");
                 Console.WriteLine(" 11 - Produto");
                 Console.WriteLine(" 12 - Retangulo");
+                Console.WriteLine(" 13 - Salario Funcionário");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair"|| className == "0")
@@ -66,23 +67,23 @@ namespace EstudoEmCSharp
 
                         Console.WriteLine("Iremos definir qual é o mais velho");
                         Console.WriteLine("Digite o nome da primeira pessoa");
-                        x.name = Console.ReadLine();
+                        x.Name = Console.ReadLine();
                         Console.WriteLine("Digite a idade da primeira pessoa");
-                        x.age = int.Parse(Console.ReadLine());
+                        x.Age = int.Parse(Console.ReadLine());
 
                         Console.WriteLine("Dados da segunda pessoa");
                         Console.WriteLine("Digite o nome da segunda pessoa");
-                        y.name = Console.ReadLine();
+                        y.Name = Console.ReadLine();
                         Console.WriteLine("Digite a idade da segunda pessoa");
-                        y.age = int.Parse(Console.ReadLine());
+                        y.Age = int.Parse(Console.ReadLine());
 
-                        if (x.age > y.age)
+                        if (x.Age > y.Age)
                         {
-                            Console.WriteLine($"A idade de {x.name} é maior que a idade de {y.name}");
+                            Console.WriteLine($"A idade de {x.Name} é maior que a idade de {y.Name}");
                         }
-                        else if (y.age > x.age)
+                        else if (y.Age > x.Age)
                         {
-                            Console.WriteLine($"A idade de {y.name} é maior que a idade de {x.name}");
+                            Console.WriteLine($"A idade de {y.Name} é maior que a idade de {x.Name}");
                         }
                         else
                         {
@@ -96,14 +97,14 @@ namespace EstudoEmCSharp
                         y2 = new Person();
 
                         Console.WriteLine("Digite o nome e em seguida o salário (use vírcula) do 1º funcionário");
-                        x2.name = Console.ReadLine();
-                        x2.salary = double.Parse(Console.ReadLine());
+                        x2.Name = Console.ReadLine();
+                        x2.Salary = double.Parse(Console.ReadLine());
                         Console.WriteLine("Digite o nome e em seguida o salário (use vírcula) do 2º funcionário");
-                        y2.name = Console.ReadLine();
-                        y2.salary = double.Parse(Console.ReadLine());
+                        y2.Name = Console.ReadLine();
+                        y2.Salary = double.Parse(Console.ReadLine());
 
                         double media;
-                        media = (x2.salary + y2.salary) / 2;
+                        media = (x2.Salary + y2.Salary) / 2;
                         Console.WriteLine($"A média salarial é de {media:F2}");
                         Console.ReadLine();
                         break;
@@ -133,6 +134,21 @@ namespace EstudoEmCSharp
                         Console.WriteLine("Digite a Largura do retangulo");
                         r.Largura = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                         Console.WriteLine(r);
+                        Console.Read();
+                        break;
+                    case "13":
+                        Person p = new Person();
+                        Console.WriteLine("Digite o nome do funcionário: ");
+                        p.Name = Console.ReadLine();
+                        Console.WriteLine("Digite o salário bruto: ");
+                        p.Salary = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.WriteLine("Digite o valor de imposto descontado: ");
+                        p.Imposto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        p.SalaryLiquid();
+                        Console.WriteLine(p);
+                        Console.WriteLine("Informe a adição salarial em porcentagem ");
+                        p.AumentarSalario(double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture));
+                        Console.WriteLine(p);
                         Console.Read();
                         break;
                     default:
