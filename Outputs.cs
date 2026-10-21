@@ -26,6 +26,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 9 - Pessoa");
                 Console.WriteLine(" 10 - Salario");
                 Console.WriteLine(" 11 - Produto");
+                Console.WriteLine(" 12 - Retangulo");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair"|| className == "0")
@@ -123,6 +124,15 @@ namespace EstudoEmCSharp
                         product.Adicionar(int.Parse(Console.ReadLine()));
                         Console.WriteLine(product);
 
+                        Console.Read();
+                        break;
+                    case "12":
+                        Retangulo r = new Retangulo();
+                        Console.WriteLine("Digite a Altura do retangulo");
+                        r.Altura = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.WriteLine("Digite a Largura do retangulo");
+                        r.Largura = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.WriteLine(r);
                         Console.Read();
                         break;
                     default:
