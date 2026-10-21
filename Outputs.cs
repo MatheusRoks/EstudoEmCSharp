@@ -28,9 +28,10 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 11 - Produto");
                 Console.WriteLine(" 12 - Retangulo");
                 Console.WriteLine(" 13 - Salario Funcionário");
+                Console.WriteLine(" 14 - Aluno");
                 string className = Console.ReadLine();
                 Console.Clear();
-                if (className.ToLower() == "sair"|| className == "0")
+                if (className.ToLower() == "sair" || className == "0")
                 {
                     break;
                 }
@@ -119,7 +120,7 @@ namespace EstudoEmCSharp
                         product.Amount = int.Parse(Console.ReadLine());
                         Console.WriteLine(product);
                         Console.Write("Insina a quantidade de produtos a serem adicionados: ");
-                        product.Adicionar( int.Parse(Console.ReadLine()));
+                        product.Adicionar(int.Parse(Console.ReadLine()));
                         Console.WriteLine(product);
                         Console.Write("Insina a quantidade de produtos a serem removidos: ");
                         product.Adicionar(int.Parse(Console.ReadLine()));
@@ -151,12 +152,38 @@ namespace EstudoEmCSharp
                         Console.WriteLine(p);
                         Console.Read();
                         break;
+                    case "14":
+                        Aluno a = new Aluno();
+                        Console.WriteLine("Insira o nome: ");
+                        a.Name = Console.ReadLine();
+                        Console.WriteLine("Digite a nota 1, 2 e 3");
+                        a.N1 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        a.N2 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        a.N3 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.WriteLine("NOTA FINAL = " + a.NotaFinal().ToString("F2", CultureInfo.InvariantCulture));
+
+                        if (a.Aprovado())
+                        {
+                            Console.WriteLine("APROVADO");
+                        }
+                        else
+                        {
+                            Console.WriteLine("REPROVADO");
+                            Console.WriteLine("FALTARAM "
+                            + a.Faltante().ToString("F2", CultureInfo.InvariantCulture)
+                            + " PONTOS");
+                        }
+
+
+
+                        Console.Read();
+                        break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
                         break;
                 }
             }
-            
+
         }
     }
 
