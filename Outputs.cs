@@ -30,6 +30,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 13 - Salario Funcionário");
                 Console.WriteLine(" 14 - Aluno");
                 Console.WriteLine(" 15 - Circunferencia(static)");
+                Console.WriteLine(" 16 - Conversão");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair" || className == "0")
@@ -178,6 +179,15 @@ namespace EstudoEmCSharp
                         break;
                     case "15":
                         Cincunferencia.Main2();
+                        Console.Read();
+                        break;
+                    case "16":
+                        Console.WriteLine("Digite a cotação do dólar: ");
+                        double cotacao = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.WriteLine("Digite a quantidade de dolares a comprar: ");
+                        double quantia = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.Write("Quantidade a pagar: ");
+                        Console.WriteLine(Conversao.ValorReal(cotacao, quantia).ToString("F2", CultureInfo.InvariantCulture));
                         Console.Read();
                         break;
                     default:
