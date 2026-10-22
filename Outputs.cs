@@ -29,6 +29,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 12 - Retangulo");
                 Console.WriteLine(" 13 - Salario Funcionário");
                 Console.WriteLine(" 14 - Aluno");
+                Console.WriteLine(" 15 - Circunferencia(static)");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair" || className == "0")
@@ -173,9 +174,10 @@ namespace EstudoEmCSharp
                             + a.Faltante().ToString("F2", CultureInfo.InvariantCulture)
                             + " PONTOS");
                         }
-
-
-
+                        Console.Read();
+                        break;
+                    case "15":
+                        Cincunferencia.Main2();
                         Console.Read();
                         break;
                     default:
