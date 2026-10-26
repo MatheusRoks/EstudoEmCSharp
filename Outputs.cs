@@ -207,6 +207,16 @@ namespace EstudoEmCSharp
                         Console.Write("Insina a quantidade de produtos a serem removidos: ");
                         product2.Adicionar(int.Parse(Console.ReadLine()));
                         Console.WriteLine(product2);
+                        /*
+                         * Ainda é possivel instanciar uma classe usando o seguinte método
+                         * ProdConstructo x = new ProdConstructor{
+                         * Name = "Rádio"
+                         * Price = 200.00
+                         * Amount = 10
+                         * }
+                         * isso permite instanciar uma classe já com os valores sem a necessidade de criar construtores, porem, se não estiver
+                         * estipulado o construtor padrão na classe mas tiver outros, esse método de instancaiação se torna invalido.
+                         */
 
                         Console.Read();
                         break;
