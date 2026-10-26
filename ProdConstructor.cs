@@ -12,20 +12,19 @@ namespace EstudoEmCSharp
 
         public ProdConstructor()
         {
-
+            Amount = 0;
         }
-        public ProdConstructor(string name, double price, int amount)
+        public ProdConstructor(string name, double price) : this()
         {
             Name = name;
             Price = price;
+
+        }/* esse this permite eu reaproveitar o Amount, sem ter que passar ele novamente*/
+
+        public ProdConstructor(string name, double price, int amount) : this(name, price)
+        {
             Amount = amount;
-        }
-
-        public ProdConstructor(string name, double price)
-        {
-            Name = name;
-            Price = price;
-            Amount = 0;/*linha dispensável*/
+            
         }
 
         public double Valor()
