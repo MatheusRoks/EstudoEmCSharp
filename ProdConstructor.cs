@@ -10,11 +10,22 @@ namespace EstudoEmCSharp
         public double Price;
         public int Amount;
 
+        public ProdConstructor()
+        {
+
+        }
         public ProdConstructor(string name, double price, int amount)
         {
             Name = name;
             Price = price;
             Amount = amount;
+        }
+
+        public ProdConstructor(string name, double price)
+        {
+            Name = name;
+            Price = price;
+            Amount = 0;/*linha dispensável*/
         }
 
         public double Valor()
