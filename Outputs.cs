@@ -31,6 +31,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 14 - Aluno");
                 Console.WriteLine(" 15 - Circunferencia(static)");
                 Console.WriteLine(" 16 - Conversão");
+                Console.WriteLine(" 17 - Produto Construtor");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair" || className == "0")
@@ -188,6 +189,25 @@ namespace EstudoEmCSharp
                         double quantia = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                         Console.Write("Quantidade a pagar: ");
                         Console.WriteLine(Conversao.ValorReal(cotacao, quantia).ToString("F2", CultureInfo.InvariantCulture));
+                        Console.Read();
+                        break;
+                    case "17":
+                        Console.WriteLine("Entre com os dados do produto");
+                        Console.Write("Nome: ");
+                        string name = Console.ReadLine();
+                        Console.Write("Preço: ");
+                        double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.Write("Quantidade: ");
+                        int amount = int.Parse(Console.ReadLine());
+                        ProdConstructor product2 = new ProdConstructor( name, price, amount);
+                        Console.WriteLine(product2);
+                        Console.Write("Insina a quantidade de produtos a serem adicionados: ");
+                        product2.Adicionar(int.Parse(Console.ReadLine()));
+                        Console.WriteLine(product2);
+                        Console.Write("Insina a quantidade de produtos a serem removidos: ");
+                        product2.Adicionar(int.Parse(Console.ReadLine()));
+                        Console.WriteLine(product2);
+
                         Console.Read();
                         break;
                     default:
