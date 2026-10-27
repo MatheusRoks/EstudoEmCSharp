@@ -21,25 +21,46 @@ namespace EstudoEmCSharp
 
         }
 
-        public string GetName()
+        //usando properties
+        public string Name
         {
-            return _name;
-        }
+            get { return _name; }
+            set
+            {
+                if (value != null && value.Length > 1)
+                {
+                    _name = value;
+                }
 
-        public void SetName(string name)
-        {
-            _name = name;
+            }
         }
+        public double Price
+        {
+            get { return _price; }
+        }
+        public int Amount
+        {
+            get { return _amount; }
+        }
+        //public string GetName()
+        //{
+        //    return _name;
+        //}
 
-        public double GetPrice()
-        {
-            return _price;
-        }
+            //public void SetName(string name)
+            //{
+            //    _name = name;
+            //}
 
-        public int GetAmount()
-        {
-            return _amount;
-        }
+            //public double GetPrice()
+            //{
+            //    return _price;
+            //}
+
+            //public int GetAmount()
+            //{
+            //    return _amount;
+            //}
 
         public double Valor()
         {

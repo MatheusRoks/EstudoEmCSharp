@@ -1,6 +1,4 @@
-﻿using System;
-using System.Globalization;
-
+﻿using System.Globalization;
 
 namespace EstudoEmCSharp
 {
@@ -8,7 +6,6 @@ namespace EstudoEmCSharp
     {
         static void Main(string[] args)
         {
-
 
             while (true)
             {
@@ -32,6 +29,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 15 - Circunferencia(static)");
                 Console.WriteLine(" 16 - Conversão");
                 Console.WriteLine(" 17 - Produto Construtor");
+                Console.WriteLine(" 18 - Produto encapsulamento manual");
                 string className = Console.ReadLine();
                 Console.Clear();
                 if (className.ToLower() == "sair" || className == "0")
@@ -199,7 +197,7 @@ namespace EstudoEmCSharp
                         double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                         Console.Write("Quantidade: ");
                         int amount = int.Parse(Console.ReadLine());
-                        ProdConstructor product2 = new ProdConstructor( name, price, amount);
+                        ProdConstructor product2 = new ProdConstructor(name, price, amount);
                         Console.WriteLine(product2);
                         Console.Write("Insina a quantidade de produtos a serem adicionados: ");
                         product2.Adicionar(int.Parse(Console.ReadLine()));
@@ -228,6 +226,5 @@ namespace EstudoEmCSharp
 
         }
     }
-
 
 }
