@@ -7,6 +7,12 @@ namespace EstudoEmCSharp
         private string _name;
         private double _price;
         private int _amount;
+        //usando autoproperties
+        /*
+         * vamos usar essa função de autopropertie quando não demandar uma lógica 
+         * public double Price{get; private set;}
+         * public int Amount {get; private set;}
+         */
 
         public Enclousure()
         {
@@ -47,20 +53,20 @@ namespace EstudoEmCSharp
         //    return _name;
         //}
 
-            //public void SetName(string name)
-            //{
-            //    _name = name;
-            //}
+        //public void SetName(string name)
+        //{
+        //    _name = name;
+        //}
 
-            //public double GetPrice()
-            //{
-            //    return _price;
-            //}
+        //public double GetPrice()
+        //{
+        //    return _price;
+        //}
 
-            //public int GetAmount()
-            //{
-            //    return _amount;
-            //}
+        //public int GetAmount()
+        //{
+        //    return _amount;
+        //}
 
         public double Valor()
         {
@@ -85,3 +91,11 @@ namespace EstudoEmCSharp
     }
 
 }
+/*
+ * a ordem de organização do código deve seguir 
+ * atributos privados
+ * atributos autoimplementados 
+ * construtores
+ * properties manuais/personalizadas
+ * demais metodos
+ */
