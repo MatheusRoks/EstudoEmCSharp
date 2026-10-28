@@ -30,8 +30,12 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 16 - Conversão");
                 Console.WriteLine(" 17 - Produto Construtor");
                 Console.WriteLine(" 18 - Produto encapsulamento manual");
+                Console.WriteLine(" 19 - Banco");
+
                 string className = Console.ReadLine();
+
                 Console.Clear();
+
                 if (className.ToLower() == "sair" || className == "0")
                 {
                     break;
@@ -217,6 +221,47 @@ namespace EstudoEmCSharp
                          */
 
                         Console.Read();
+                        break;
+                    case "19":
+                        Console.WriteLine("Iremos realizar o cadastro de sua conta");
+                        Console.WriteLine("Digite o nome do titular da conta");
+                        string Name = Console.ReadLine();
+
+                        Console.WriteLine("Digite o número da conta");
+                        int Number = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Digite o valor do depósito inical ou deixe em branco");
+                        string entrada = Console.ReadLine();
+                        double Money = string.IsNullOrWhiteSpace(entrada)
+                            ? 0.0
+                            : double.Parse(entrada, CultureInfo.InvariantCulture);
+
+                        Banco b = new Banco(Name, Number, Money);
+
+                        Console.WriteLine(b);
+
+                        Console.WriteLine("Deseja renomear a conta S/N");
+                        string Renomear = Console.ReadLine();
+
+                        if (Renomear.ToLower() == "s")
+                        {
+                            Console.WriteLine("Dgite o novo nome: ");
+                            string NewName = Console.ReadLine();
+                            b.Rename(NewName);
+                        }
+
+                        Console.WriteLine("Digite o valor a adicionar na conta: ");
+                        double NewValue = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        b.AddMoney(NewValue);
+                        Console.WriteLine(b);
+
+                        Console.WriteLine("Digite o valor para sacar: ");
+                        double Saque = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        b.TakeMoney(Saque);
+                        Console.WriteLine(b);
+
+                        Console.Read();
+
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
