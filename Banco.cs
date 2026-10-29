@@ -7,7 +7,7 @@ namespace EstudoEmCSharp
         public int CountNumber { get; private set; }
         public double Money { get; private set; }
 
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         public Banco(string name, int countNumber, double money)
         {
@@ -15,13 +15,8 @@ namespace EstudoEmCSharp
             CountNumber = countNumber;
             if (money >= 0)
             {
-                Money = money;
+                AddMoney(money);
             }
-            else
-            {
-                Money = 0.0;
-            }
-
         }
         public Banco(string name, int countNumber)
         {
@@ -47,7 +42,7 @@ namespace EstudoEmCSharp
         }
         public void TakeMoney(double value)
         {
-            if (value >= 1 && Money >= value)
+            if (value >= 1 && Money >= value + 5.00)
             {
                 Money -= value;
             }

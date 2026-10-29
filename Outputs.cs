@@ -225,18 +225,24 @@ namespace EstudoEmCSharp
                     case "19":
                         Console.WriteLine("Iremos realizar o cadastro de sua conta");
                         Console.WriteLine("Digite o nome do titular da conta");
+                        Banco b;
                         string Name = Console.ReadLine();
 
                         Console.WriteLine("Digite o número da conta");
                         int Number = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("Digite o valor do depósito inical ou deixe em branco");
-                        string entrada = Console.ReadLine();
-                        double Money = string.IsNullOrWhiteSpace(entrada)
-                            ? 0.0
-                            : double.Parse(entrada, CultureInfo.InvariantCulture);
-
-                        Banco b = new Banco(Name, Number, Money);
+                        Console.WriteLine("Deseja depositar S/N");
+                        string Option = Console.ReadLine().ToLower();
+                        if (Option == "s")
+                        {
+                            Console.WriteLine("Digite o valor do depósito inical ou deixe em branco");
+                            double Money = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                            b = new Banco(Name, Number, Money);
+                        }
+                        else
+                        {
+                            b = new Banco(Name, Number);
+                        }
 
                         Console.WriteLine(b);
 
