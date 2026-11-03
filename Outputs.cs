@@ -307,7 +307,7 @@ namespace EstudoEmCSharp
                         for (int i = 0; i < 10; i++)
                         {
                             if (pensionato[i] is not null)
-                                Console.WriteLine($"Quarto {i+1} ocupado por {pensionato[i].Name} com o email {pensionato[i].Email} ");
+                                Console.WriteLine($"Quarto {i + 1} ocupado por {pensionato[i].Name} com o email {pensionato[i].Email} ");
                         }
                         Console.Read();
                         break;
@@ -316,6 +316,14 @@ namespace EstudoEmCSharp
                         int s2 = Calculator.Sum(3, 9);
                         Console.WriteLine(s1);
                         Console.WriteLine(s2);
+                        int a1 = 10;
+                        Calculator.Triple(ref a1);
+                        Console.WriteLine(a1);
+                        int b1 = 20;
+                        int triple;
+                        Calculator.TripleS(b1, out triple);
+                        Console.WriteLine(triple);
+
                         Console.Read();
                         break;
 
