@@ -31,6 +31,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 17 - Produto Construtor");
                 Console.WriteLine(" 18 - Produto encapsulamento manual");
                 Console.WriteLine(" 19 - Banco");
+                Console.WriteLine(" 20 - Pensionato");
 
                 string className = Console.ReadLine();
 
@@ -267,8 +268,49 @@ namespace EstudoEmCSharp
                         Console.WriteLine(b);
 
                         Console.Read();
-
                         break;
+                    case "20":
+                        Console.WriteLine("Indique quantos estudantes irão se cadastrar");
+                        int quantity = int.Parse(Console.ReadLine());
+
+                        Pensionato[] pensionato = new Pensionato[10];
+
+                        for (int i = 0; i < quantity; i++)
+                        {
+                            bool livre = false;
+                            Console.WriteLine("Digite o nome do estudante: ");
+                            string name1 = Console.ReadLine();
+                            Console.WriteLine("Digite o email do estudante");
+                            string email = Console.ReadLine();
+
+                            while (livre is not true)
+                            {
+                                Console.WriteLine("Digite o número que deseja ocupar: ");
+                                int quarto = int.Parse(Console.ReadLine());
+                                int indice = quarto - 1;
+
+                                if (pensionato[indice] is null)
+                                {
+                                    pensionato[indice] = new Pensionato { Name = name1, Email = email };
+                                    livre = true;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Quarto ocupado escoolha outro");
+                                }
+
+                            }
+
+                        }
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            if (pensionato[i] is not null)
+                                Console.WriteLine($"Quarto {i+1} ocupado por {pensionato[i].Name} com o email {pensionato[i].Email} ");
+                        }
+                        Console.Read();
+                        break;
+
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
                         break;
