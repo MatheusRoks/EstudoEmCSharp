@@ -32,6 +32,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 18 - Produto encapsulamento manual");
                 Console.WriteLine(" 19 - Banco");
                 Console.WriteLine(" 20 - Pensionato");
+                Console.WriteLine(" 21 - Calculator");
 
                 string className = Console.ReadLine();
 
@@ -308,6 +309,13 @@ namespace EstudoEmCSharp
                             if (pensionato[i] is not null)
                                 Console.WriteLine($"Quarto {i+1} ocupado por {pensionato[i].Name} com o email {pensionato[i].Email} ");
                         }
+                        Console.Read();
+                        break;
+                    case "21":
+                        int s1 = Calculator.Sum(2, 3);
+                        int s2 = Calculator.Sum(3, 9);
+                        Console.WriteLine(s1);
+                        Console.WriteLine(s2);
                         Console.Read();
                         break;
 
