@@ -33,6 +33,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 19 - Banco");
                 Console.WriteLine(" 20 - Pensionato");
                 Console.WriteLine(" 21 - Calculator");
+                Console.WriteLine(" 22 - Cadastro Funcionário (listas)");
 
                 string className = Console.ReadLine();
 
@@ -326,7 +327,60 @@ namespace EstudoEmCSharp
 
                         Console.Read();
                         break;
+                    case "22":
+                        List<CadastroFuncionarios> lista = new List<CadastroFuncionarios>();
+                        Console.WriteLine("Digite a quantidade de funcionários a ser cadastrado: ");
+                        int quantidadeF = int.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        for(int x1 = 0; x1<quantidadeF; x1++)
+                        {
+                            bool verificador = false;
+                            while(verificador != true)
+                            {
+                                Console.WriteLine("Adicione o id: ");
+                                int id = int.Parse(Console.ReadLine());
+                                if (lista.FindAll(x => x.Id == id).Count > 0)
+                                {
+                                    Console.WriteLine("Id já cadastrado, digite outro");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Digite o nome do funcionário: ");
+                                    string nameF = Console.ReadLine();
+                                    Console.WriteLine("Digite o salário do funcionário: ");
+                                    double salaryF = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                                    lista.Add(new CadastroFuncionarios(id, nameF, salaryF));
+                                    verificador = true;
+                                }
+                            }
 
+                        }
+                        foreach (CadastroFuncionarios c in lista)
+                            Console.WriteLine($"{c.Id} - {c.Name} : {c.Salary:F2}");
+                        bool verificador2 = false;
+                        while (!verificador2)
+                        {
+                            Console.WriteLine("Deseja alterar o salario de algum funcionário? S/N");
+                            string option1 = Console.ReadLine().ToLower();
+                            if (option1 == "n")
+                                verificador2 = true;
+                            else
+                            {
+                                Console.WriteLine("Digite o id do funcionário");
+                                int escolhido = int.Parse(Console.ReadLine());
+                                CadastroFuncionarios recebido = lista.Find(x => x.Id == escolhido);
+                                if (recebido is not null)
+                                {
+                                    Console.WriteLine("Digite a porcentagem que deseja adicionar ao salário: ");
+                                    double aumento = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                                    recebido.AddSalary(aumento);
+                                    verificador2 = true;
+                                }
+                            }
+                        }
+                        foreach (CadastroFuncionarios c in lista)
+                            Console.WriteLine($"{c.Id} - {c.Name} : {c.Salary:F2}");
+                        Console.Read();
+                        break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
                         break;
