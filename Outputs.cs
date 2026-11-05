@@ -34,6 +34,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 20 - Pensionato");
                 Console.WriteLine(" 21 - Calculator");
                 Console.WriteLine(" 22 - Cadastro Funcionário (listas)");
+                Console.WriteLine(" 23 - Matriz");
 
                 string className = Console.ReadLine();
 
@@ -331,10 +332,10 @@ namespace EstudoEmCSharp
                         List<CadastroFuncionarios> lista = new List<CadastroFuncionarios>();
                         Console.WriteLine("Digite a quantidade de funcionários a ser cadastrado: ");
                         int quantidadeF = int.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                        for(int x1 = 0; x1<quantidadeF; x1++)
+                        for (int x1 = 0; x1 < quantidadeF; x1++)
                         {
                             bool verificador = false;
-                            while(verificador != true)
+                            while (verificador != true)
                             {
                                 Console.WriteLine("Adicione o id: ");
                                 int id = int.Parse(Console.ReadLine());
@@ -380,6 +381,45 @@ namespace EstudoEmCSharp
                         foreach (CadastroFuncionarios c in lista)
                             Console.WriteLine($"{c.Id} - {c.Name} : {c.Salary:F2}");
                         Console.Read();
+                        break;
+                    case "23":
+                        Console.WriteLine("Elaborando uma matriz");
+                        Console.WriteLine("Digite um número para as linhas");
+                        int lines = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Digite um número para as colunas");
+                        int column = int.Parse(Console.ReadLine());
+                        int[,] matriz = new int[lines, column];
+
+                        for (int i = 0; i < lines; i++)
+                        {
+                            Console.WriteLine($"Digite todos o valores da linha {i+1}");
+                            string[] values = Console.ReadLine().Split(' ');
+                            for (int j = 0; j < column; j++)
+                            {
+                                matriz[i, j] = int.Parse(values[j]);
+
+                            }
+                        }
+
+                        Console.WriteLine("Digite o número que deseja procurar: ");
+                        int numberSearch = int.Parse(Console.ReadLine());
+                        for (int i = 0; i < lines; i++)
+                        {
+                            for (int j = 0; j < column; j++)
+                            {
+                                if (matriz[i, j] == numberSearch)
+                                {
+                                    int? left = j > 0 ? matriz[i, j - 1] : null;
+                                    int? up = i > 0 ? matriz[i - 1, j] : null;
+                                    int? right = j < column - 1 ? matriz[1, j + 1] : null;
+                                    int? down = i < lines - 1 ? matriz[i + 1, j] : null;
+
+                                    Console.WriteLine($"Número {numberSearch} encontrado na posição {i},{j}, à esquerda temos {left?.ToString() ?? "NADA"}.");
+                                    Console.WriteLine($"Acima temos {up?.ToString() ?? "NADA"}, à direita {right?.ToString() ?? "NADA"} e abaixo {down?.ToString() ?? "NADA"}.");
+                                }
+                            }
+                        }
+                        Console.ReadLine();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
