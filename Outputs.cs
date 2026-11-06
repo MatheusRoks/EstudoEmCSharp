@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using EstudoEmCSharp.Entities;
+using EstudoEmCSharp.Entities.Enums;
+using System.Globalization;
 
 namespace EstudoEmCSharp
 {
@@ -431,11 +433,34 @@ namespace EstudoEmCSharp
                         Console.Write("Nome: ");
                         string nameFunc = Console.ReadLine();
                         Console.Write("Level [Junior, MidLevel, Senior]: ");
-                        string level = Console.ReadLine();
+                        WorkLevel level = Enum.Parse<WorkLevel>(Console.ReadLine());
                         Console.Write("Salário base: ");
                         double basicSalary = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Departament dept = new Departament(deptName);
+                        Worker worker = new Worker(nameFunc, level, basicSalary, dept);
 
-                        string name = Console.ReadLine();
+                        Console.Write("Digite a quantidade de contratos fechados: ");
+                        int contracts = int.Parse(Console.ReadLine());
+                        for(int i= 0; i< contracts; i++)
+                        {
+                            Console.WriteLine($"Entre com o {i+1}º contrato: ");
+                            Console.Write("Data(DD/MM/YYYY): ");
+                            DateTime date1 = DateTime.Parse(Console.ReadLine());
+                            Console.Write("Entre com o valor por hora trabalhada: ");
+                            double salaryPerHouer = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                            Console.Write("Quatidade de horas: ");
+                            int hours = int.Parse(Console.ReadLine());
+                            HourContract contract = new HourContract(date1, salaryPerHouer, hours);
+                            worker.AddContract(contract);
+                        }
+                        Console.WriteLine("Entre com o mes e o ano para calcular o ganho: ");
+                        string monthAndYear = Console.ReadLine();
+                        int month = int.Parse(monthAndYear.Substring(0, 2));
+                        int year = int.Parse(monthAndYear.Substring(3));
+                        Console.WriteLine("Nome: " + worker.Name);
+                        Console.WriteLine($"Departamento: {worker.Departament.Name}");
+                        Console.WriteLine($"Salario do mês{month} do ano {year} = {worker.Income(month, year)}");
+                        Console.ReadLine();
 
                         break;
                     default:
