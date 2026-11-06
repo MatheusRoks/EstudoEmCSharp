@@ -35,6 +35,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 21 - Calculator");
                 Console.WriteLine(" 22 - Cadastro Funcionário (listas)");
                 Console.WriteLine(" 23 - Matriz");
+                Console.WriteLine(" 24 - Cadastro Funcionario (composição)");
 
                 string className = Console.ReadLine();
 
@@ -420,6 +421,22 @@ namespace EstudoEmCSharp
                             }
                         }
                         Console.ReadLine();
+                        break;
+                    case "24":
+
+                        Console.Write("Digite o departamento que o funcionário pertence: ");
+                        string deptName = Console.ReadLine();
+                        Console.WriteLine("Entre com os dados do funcionário");
+                        Console.WriteLine();
+                        Console.Write("Nome: ");
+                        string nameFunc = Console.ReadLine();
+                        Console.Write("Level [Junior, MidLevel, Senior]: ");
+                        string level = Console.ReadLine();
+                        Console.Write("Salário base: ");
+                        double basicSalary = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                        string name = Console.ReadLine();
+
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");

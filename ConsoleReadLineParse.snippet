@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Console ReadLine Parse</Title>
+			<Shortcut>crp</Shortcut>
+			<Description>Lê e converte uma entrada do console.</Description>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Tipo de dado (int, double, decimal...)</ToolTip>
+					<Default>int</Default>
+				</Literal>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>Nome da variável</ToolTip>
+					<Default>number</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="CSharp">
+				<![CDATA[$type$ $name$ = $type$.Parse(Console.ReadLine());]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

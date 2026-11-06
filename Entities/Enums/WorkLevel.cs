@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EstudoEmCSharp.Entities.Enums
+﻿namespace EstudoEmCSharp.Entities.Enums
 {
-    internal class WorkLevel
+    enum WorkLevel : int
     {
+        Junior,
+        MidLevel,
+        Senior,
+
     }
 }
