@@ -38,6 +38,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 22 - Cadastro Funcionário (listas)");
                 Console.WriteLine(" 23 - Matriz");
                 Console.WriteLine(" 24 - Cadastro Funcionario (composição)");
+                Console.WriteLine(" 25 - Post");
 
                 string className = Console.ReadLine();
 
@@ -395,7 +396,7 @@ namespace EstudoEmCSharp
 
                         for (int i = 0; i < lines; i++)
                         {
-                            Console.WriteLine($"Digite todos o valores da linha {i+1}");
+                            Console.WriteLine($"Digite todos o valores da linha {i + 1}");
                             string[] values = Console.ReadLine().Split(' ');
                             for (int j = 0; j < column; j++)
                             {
@@ -441,9 +442,9 @@ namespace EstudoEmCSharp
 
                         Console.Write("Digite a quantidade de contratos fechados: ");
                         int contracts = int.Parse(Console.ReadLine());
-                        for(int i= 0; i< contracts; i++)
+                        for (int i = 0; i < contracts; i++)
                         {
-                            Console.WriteLine($"Entre com o {i+1}º contrato: ");
+                            Console.WriteLine($"Entre com o {i + 1}º contrato: ");
                             Console.Write("Data(DD/MM/YYYY): ");
                             DateTime date1 = DateTime.Parse(Console.ReadLine());
                             Console.Write("Entre com o valor por hora trabalhada: ");
@@ -462,6 +463,42 @@ namespace EstudoEmCSharp
                         Console.WriteLine($"Salario do mês{month} do ano {year} = {worker.Income(month, year)}");
                         Console.ReadLine();
 
+                        break;
+                    case "25":
+                        Console.WriteLine("Digite o primeiro comentário: ");
+                        string commentA = Console.ReadLine();
+                        Console.WriteLine("Digite o segundo comentário: ");
+                        string commentB = Console.ReadLine();
+                        Console.WriteLine("Digite o terceiro comentário: ");
+                        string commentC = Console.ReadLine();
+                        Console.WriteLine("Digite o quarto comentário: ");
+                        string commentD = Console.ReadLine();
+                        Comment c1 = new Comment(commentA);
+                        Comment c2 = new Comment(commentB);
+                        Comment c3 = new Comment(commentC);
+                        Comment c4 = new Comment(commentD);
+
+                        Post p1 = new Post(
+                            DateTime.Now,
+                            "Travalling for Alta Floresta",
+                            "Finally going see my family",
+                            14
+                            );
+                        p1.AddComments(c1);
+                        p1.AddComments(c2);
+
+                        Post p2 = new Post(
+                            DateTime.Now,
+                            "A beautiful day in Curitiba",
+                            "Enjoying the city and its amazing places!",
+                            8
+                        );
+                        p2.AddComments(c3);
+                        p2.AddComments(c4);
+
+                        Console.WriteLine(p1);
+                        Console.WriteLine(p2);
+                        Console.ReadLine();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
