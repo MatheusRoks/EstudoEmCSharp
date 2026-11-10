@@ -39,6 +39,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 23 - Matriz");
                 Console.WriteLine(" 24 - Cadastro Funcionario (composição)");
                 Console.WriteLine(" 25 - Post");
+                Console.WriteLine(" 26 - Produtos");
 
                 string className = Console.ReadLine();
 
@@ -500,6 +501,76 @@ namespace EstudoEmCSharp
                         Console.WriteLine(p2);
                         Console.ReadLine();
                         break;
+                    case "26":
+                        Console.WriteLine("Cadastro do cliente: ");
+                        Console.Write("Digite o nome do cliente: ");
+                        string clientName = Console.ReadLine();
+
+                        Console.Write("Digite o email do cliente: ");
+                        string emailClient = Console.ReadLine();
+
+                        Console.Write("Digite a data de nascimento do cliente: ");
+                        DateTime birthDate = DateTime.Parse(Console.ReadLine());
+
+                        Client client = new Client(clientName, emailClient, birthDate);
+
+                        Console.WriteLine("\nCadastro do pedido:");
+                        Console.Write("Digite o status do pedido: ");
+                        OrderStatus status = Enum.Parse<OrderStatus>(Console.ReadLine());
+
+                        Order order = new Order(DateTime.Now, status);
+
+                        Console.Write("Quantos produtos deseja adicionar? ");
+                        int quantityProducts = int.Parse(Console.ReadLine());
+
+                        for (int i = 0; i < quantityProducts; i++)
+                        {
+                            Console.WriteLine($"\nProduto #{i + 1}");
+
+                            Console.Write("Digite o nome do produto: ");
+                            string nameProd = Console.ReadLine();
+
+                            Console.Write("Digite o valor do produto: ");
+                            double productPrice = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                            Console.Write("Digite a quantidade: ");
+                            int quantityx = int.Parse(Console.ReadLine());
+
+                            ProductE productx = new ProductE(nameProd, productPrice);
+
+                            OrderItem item = new OrderItem(quantityx, productPrice);
+                            item.product = productx;
+                            item.SumTotal();
+
+                            order.AddItem(item);
+                        }
+
+                        order.TotalValue();
+                        Console.WriteLine();
+                        Console.WriteLine("RESUMO DO PEDIDO");
+                        Console.WriteLine($"Cliente: {clientName}");
+                        Console.WriteLine($"Email: {emailClient}");
+                        Console.WriteLine($"Data de nascimento: {birthDate:dd/MM/yyyy}");
+                        Console.WriteLine($"Momento do pedido: {order.Moment}");
+                        Console.WriteLine($"Status do pedido: {order.OrderStatus}");
+                        Console.WriteLine();
+                        Console.WriteLine("ITENS DO PEDIDO");
+
+                        foreach (OrderItem item in order.Items)
+                        {
+                            Console.WriteLine(
+                                $"{item.product.Name} - " +
+                                $"Preço: {item.Price:F2} - " +
+                                $"Quantidade: {item.Quantity} - " +
+                                $"Subtotal: {item.SubTotal:F2}"
+                            );
+                        }
+                        Console.WriteLine();
+                        Console.WriteLine($"Total do pedido: {order.Total:F2}");
+
+                        Console.ReadLine();
+                        break;
+
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
                         break;
