@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime;
-using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace EstudoEmCSharp.Entities
+﻿namespace EstudoEmCSharp.Entities
 {
     internal class BusinessAccount : Account
     {
@@ -24,6 +18,10 @@ namespace EstudoEmCSharp.Entities
                 Deposit(amount);
 
             }
+        }
+        public override string ToString()
+        {
+            return $"{base.ToString()}, LoanLimit: {LoanLimit:F2}%";
         }
 
     }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EstudoEmCSharp.Entities
+﻿namespace EstudoEmCSharp.Entities
 {
     internal class Account
     {
@@ -10,7 +6,8 @@ namespace EstudoEmCSharp.Entities
         public string Holder { get; set; }
         public double Balance { get; private set; }
 
-        public Account(){
+        public Account()
+        {
 
         }
 
@@ -23,14 +20,19 @@ namespace EstudoEmCSharp.Entities
 
         public void Withdraw(double amount)
         {
-            if (Balance>=amount&& amount>0)
+            if (Balance >= amount && amount > 0)
                 Balance -= amount;
         }
 
         public void Deposit(double amount)
         {
-            if (amount > 0)
+            if (amount >= 0)
                 Balance += amount;
+        }
+
+        public override string ToString()
+        {
+            return $"Account {Number}, Holder: {Holder}, Balance: $ {Balance:F2}";
         }
     }
 }

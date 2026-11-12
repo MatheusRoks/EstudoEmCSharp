@@ -40,6 +40,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 24 - Cadastro Funcionario (composição)");
                 Console.WriteLine(" 25 - Post");
                 Console.WriteLine(" 26 - Produtos");
+                Console.WriteLine(" 27 - Accounts");
 
                 string className = Console.ReadLine();
 
@@ -570,7 +571,76 @@ namespace EstudoEmCSharp
 
                         Console.ReadLine();
                         break;
+                    case "27":
+                        Console.Write("Digite 1 para conta pessoal 2 para conta empresarial e 3 para poupança: ");
+                        string type = Console.ReadLine();
+                        switch (type)
+                        {
+                            case "1":
+                                Console.WriteLine("Digite o número da conta: ");
+                                int acNumber = int.Parse(Console.ReadLine());
+                                Console.WriteLine("Digite o nome do titular: ");
+                                string holder = Console.ReadLine();
+                                Console.WriteLine("Digite o deposito inicial: ");
+                                double deposit = double.Parse(Console.ReadLine());
 
+                                Account conta1 = new Account(acNumber, holder, deposit);
+                                Console.WriteLine(conta1);
+                                break;
+                            case "2":
+                                Console.WriteLine("Cadastro de conta empresarial: ");
+                                Console.WriteLine("Digite o número da conta: ");
+                                int businessNumber = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Digite o nome do titular: ");
+                                string businessHolder = Console.ReadLine();
+
+                                Console.WriteLine("Digite o depósito inicial: ");
+                                double businessDeposit = double.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Digite o limite de empréstimo: ");
+                                double loanLimit = double.Parse(Console.ReadLine());
+
+                                BusinessAccount businessAccount = new BusinessAccount(
+                                    businessNumber,
+                                    businessHolder,
+                                    businessDeposit,
+                                    loanLimit
+                                );
+
+                                Console.WriteLine(businessAccount);
+                                Console.ReadLine();
+                                break;
+                            case "3":
+                                Console.WriteLine("Cadastro de conta poupança: ");
+                                Console.WriteLine("Digite o número da conta: ");
+                                int savingsNumber = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Digite o nome do titular: ");
+                                string savingsHolder = Console.ReadLine();
+
+                                Console.WriteLine("Digite o depósito inicial: ");
+                                double savingsDeposit = double.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Digite a taxa de juros: ");
+                                double interestRate = double.Parse(Console.ReadLine());
+
+                                SavingsAccount savingsAccount = new SavingsAccount(
+                                    savingsNumber,
+                                    savingsHolder,
+                                    savingsDeposit,
+                                    interestRate
+                                );
+
+                                Console.WriteLine(savingsAccount);
+                                Console.ReadLine();
+                                break;
+                            default:
+                                Console.WriteLine($"Classe '{className}' não encontrada.");
+                                Console.ReadLine();
+                                break;
+                        }
+                        break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
                         break;
