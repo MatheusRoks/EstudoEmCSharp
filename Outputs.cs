@@ -41,6 +41,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 25 - Post");
                 Console.WriteLine(" 26 - Produtos");
                 Console.WriteLine(" 27 - Accounts");
+                Console.WriteLine(" 28 - Cadastro Funcionários terceirizados");
 
                 string className = Console.ReadLine();
 
@@ -586,6 +587,7 @@ namespace EstudoEmCSharp
 
                                 Account conta1 = new Account(acNumber, holder, deposit);
                                 Console.WriteLine(conta1);
+                                Console.ReadLine();
                                 break;
                             case "2":
                                 Console.WriteLine("Cadastro de conta empresarial: ");
@@ -633,13 +635,69 @@ namespace EstudoEmCSharp
                                 );
 
                                 Console.WriteLine(savingsAccount);
-                                Console.ReadLine();
                                 break;
                             default:
                                 Console.WriteLine($"Classe '{className}' não encontrada.");
                                 Console.ReadLine();
                                 break;
                         }
+                        Account cc1 = new Account(5002, "Antonio", 1000);
+                        Account cc2 = new SavingsAccount(5002, "Antonio", 1000, 5.2);
+                        Console.WriteLine("Usando o polimorfismo");
+                        Console.WriteLine(cc1);
+                        Console.WriteLine(cc2);
+                        cc1.Withdraw(100);
+                        cc2.Withdraw(100);
+                        Console.WriteLine("Sacando 100 em cada uma das contas");
+                        Console.WriteLine(cc1);
+                        Console.WriteLine(cc2);
+                        Console.ReadLine();
+                        break;
+                    case "28":
+                        Console.WriteLine("Cadastro de funcionários");
+                        List<Employee> employees = new List<Employee>();
+                        Console.WriteLine("Digite o número de funcionarios a ser cadastrados: ");
+                        int numberEmpl = int.Parse(Console.ReadLine());
+                        for (int i = 0; i<numberEmpl; )
+                        {
+                            Console.WriteLine("É terceirizado s/n");
+                            string tipoEmp = Console.ReadLine();
+                            if (tipoEmp.ToLower() == "s")
+                            {
+                                Console.Write("Digite o nome: ");
+                                string nameEmp = Console.ReadLine();
+                                Console.Write("Quantidade de horas: ");
+                                double horasEfet = double.Parse(Console.ReadLine(), CultureInfo.InstalledUICulture);
+                                Console.Write("Valor pela hora: ");
+                                double valuePerEmp = double.Parse(Console.ReadLine(), CultureInfo.InstalledUICulture);
+                                Console.WriteLine("Valor adicional: ");
+                                double additionalValue = double.Parse(Console.ReadLine());
+                                Employee emp1 = new OutsourcedEmployee(nameEmp, horasEfet, valuePerEmp, additionalValue);
+                                employees.Add(emp1);
+                                i++;
+                            }
+                            else if(tipoEmp.ToLower() == "n")
+                            {
+                                Console.Write("Digite o nome: ");
+                                string nameEmp = Console.ReadLine();
+                                Console.Write("Quantidade de horas: ");
+                                double horasEfet = double.Parse(Console.ReadLine(), CultureInfo.InstalledUICulture);
+                                Console.Write("Valor pela hora: ");
+                                double valuePerEmp = double.Parse(Console.ReadLine(), CultureInfo.InstalledUICulture);
+                                Employee emp1 = new Employee(nameEmp, horasEfet, valuePerEmp);
+                                employees.Add(emp1);
+                                i++;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Inválido, tente novamente");
+                            }
+                        }
+                        foreach (Employee i in employees)
+                        {
+                            Console.WriteLine(i);
+                        }
+                        Console.Read();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");

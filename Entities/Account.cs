@@ -5,6 +5,7 @@
         public int Number { get; set; }
         public string Holder { get; set; }
         public double Balance { get; private set; }
+        protected virtual double WithdrawalFee => 5.0;
 
         public Account()
         {
@@ -20,8 +21,10 @@
 
         public void Withdraw(double amount)
         {
-            if (Balance >= amount && amount > 0)
-                Balance -= amount;
+            double total = amount + WithdrawalFee;
+
+            if (amount > 0 && Balance >= total)
+                Balance -= total;
         }
 
         public void Deposit(double amount)
