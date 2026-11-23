@@ -42,6 +42,8 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 26 - Produtos");
                 Console.WriteLine(" 27 - Accounts");
                 Console.WriteLine(" 28 - Cadastro Funcionários terceirizados");
+                Console.WriteLine(" 29 - Produtos herança e polimorfismo");
+                Console.WriteLine(" 30 - Imposto de renda CPF e CNPJ");
 
                 string className = Console.ReadLine();
 
@@ -658,7 +660,7 @@ namespace EstudoEmCSharp
                         List<Employee> employees = new List<Employee>();
                         Console.WriteLine("Digite o número de funcionarios a ser cadastrados: ");
                         int numberEmpl = int.Parse(Console.ReadLine());
-                        for (int i = 0; i<numberEmpl; )
+                        for (int i = 0; i < numberEmpl;)
                         {
                             Console.WriteLine("É terceirizado s/n");
                             string tipoEmp = Console.ReadLine();
@@ -676,7 +678,7 @@ namespace EstudoEmCSharp
                                 employees.Add(emp1);
                                 i++;
                             }
-                            else if(tipoEmp.ToLower() == "n")
+                            else if (tipoEmp.ToLower() == "n")
                             {
                                 Console.Write("Digite o nome: ");
                                 string nameEmp = Console.ReadLine();
@@ -698,6 +700,119 @@ namespace EstudoEmCSharp
                             Console.WriteLine(i);
                         }
                         Console.Read();
+                        break;
+                    case "29":
+                        List<ProductHP> products = new List<ProductHP>();
+
+                        Console.WriteLine("Quantos produtos deseja cadastrar?");
+                        int quantity1 = int.Parse(Console.ReadLine());
+
+                        for (int i = 0; i < quantity1; i++)
+                        {
+                            Console.WriteLine($"\nDados do produto #{i + 1}");
+                            Console.WriteLine("Produto comum, importado ou usado? (C/I/U)");
+                            string type1 = Console.ReadLine().ToLower();
+
+                            if (type1 != "c" && type1 != "i" && type1 != "u")
+                            {
+                                Console.WriteLine("Tipo inválido!");
+                                i--;
+                                continue;
+                            }
+
+                            Console.Write("Nome do produto: ");
+                            string name2 = Console.ReadLine();
+
+                            Console.Write("Preço do produto: ");
+                            double price2 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                            switch (type1)
+                            {
+                                case "c":
+                                    products.Add(new ProductHP(name2, price2));
+                                    break;
+
+                                case "i":
+                                    Console.Write("Taxa alfandegária: ");
+                                    double customFee = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                                    products.Add(new ImportedProducts(name2, price2, customFee));
+                                    break;
+
+                                case "u":
+                                    Console.Write("Data de fabricação (DD/MM/AAAA): ");
+                                    DateTime data = DateTime.ParseExact(
+                                        Console.ReadLine(),
+                                        "dd/MM/yyyy",
+                                        CultureInfo.InvariantCulture
+                                    );
+
+                                    products.Add(new UsedProductHP(name2, price2, data));
+                                    break;
+                            }
+                        }
+
+                        Console.WriteLine("\nETIQUETAS DOS PRODUTOS:");
+
+                        foreach (ProductHP product1 in products)
+                        {
+                            Console.WriteLine(product1.PriceTag());
+                        }
+
+                        Console.ReadLine();
+                        break;
+                    case "30":
+                        List<AbsPerson> people = new List<AbsPerson>();
+
+                        Console.WriteLine("Quantas pessoas deseja cadastrar?");
+                        int quantityc = int.Parse(Console.ReadLine());
+
+                        for (int i = 0; i < quantityc; i++)
+                        {
+                            Console.WriteLine($"\nCadastro da pessoa #{i + 1}");
+                            Console.WriteLine("Pessoa física ou jurídica? (CPF/CNPJ)");
+                            string typec = Console.ReadLine().ToUpper();
+
+                            Console.Write("Digite o nome: ");
+                            string namec = Console.ReadLine();
+
+                            Console.Write("Digite a renda anual: ");
+                            double annualIncome = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                            if (typec == "CPF")
+                            {
+                                Console.Write("Digite os gastos com saúde: ");
+                                double healthcare = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                                people.Add(new CPFperson(namec, annualIncome, healthcare));
+                            }
+                            else if (typec == "CNPJ")
+                            {
+                                Console.Write("Digite a quantidade de funcionários: ");
+                                int funcAmount = int.Parse(Console.ReadLine());
+
+                                people.Add(new CNPJPerson(namec, annualIncome, funcAmount));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tipo inválido!");
+                                i--;
+                            }
+                        }
+
+                        double totalTax = 0.0;
+
+                        Console.WriteLine("\nIMPOSTOS PAGOS:");
+
+                        foreach (AbsPerson person in people)
+                        {
+                            Console.WriteLine($"{person.Name}: $ {person.Tax():F2}");
+                            totalTax += person.Tax();
+                        }
+
+                        Console.WriteLine($"\nTOTAL DE IMPOSTOS: $ {totalTax:F2}");
+
+                        Console.ReadLine();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
