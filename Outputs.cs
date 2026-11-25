@@ -1,5 +1,6 @@
 ﻿using EstudoEmCSharp.Entities;
 using EstudoEmCSharp.Entities.Enums;
+using EstudoEmCSharp.Entities.Exceptions;
 using System.Globalization;
 
 namespace EstudoEmCSharp
@@ -44,6 +45,7 @@ namespace EstudoEmCSharp
                 Console.WriteLine(" 28 - Cadastro Funcionários terceirizados");
                 Console.WriteLine(" 29 - Produtos herança e polimorfismo");
                 Console.WriteLine(" 30 - Imposto de renda CPF e CNPJ");
+                Console.WriteLine(" 31 - Hotel");
 
                 string className = Console.ReadLine();
 
@@ -813,6 +815,33 @@ namespace EstudoEmCSharp
                         Console.WriteLine($"\nTOTAL DE IMPOSTOS: $ {totalTax:F2}");
 
                         Console.ReadLine();
+                        break;
+                    case "31":
+                         try
+                               {Console.WriteLine("Número do quarto: ");
+                                int roomNumber = int.Parse(Console.ReadLine());
+                                Console.WriteLine("Check-in date (DD/MM/YYYY): ");
+                                DateTime checkIn = DateTime.Parse(Console.ReadLine());
+                                Console.WriteLine("Check-out date (DD/MM/YYYY): ");
+                                DateTime checkOut = DateTime.Parse(Console.ReadLine());
+                                Reservation reservation = new Reservation(roomNumber, checkIn, checkOut);
+                                Console.WriteLine(reservation);
+                                Console.WriteLine();
+                                Console.WriteLine("Update Dates: ");
+                                Console.WriteLine("Check-in date (DD/MM/YYYY): ");
+                                DateTime checkInN = DateTime.Parse(Console.ReadLine());
+                                Console.WriteLine("Check-out date (DD/MM/YYYY): ");
+                                DateTime checkOutN = DateTime.Parse(Console.ReadLine());
+                                reservation.UpdateDates(checkInN, checkOutN);
+                                Console.WriteLine(reservation);
+                                Console.ReadLine();
+                        }
+                        catch (DomainExcpetion e)
+                        {
+                            Console.WriteLine("Error in reservation" + e);
+                            Console.ReadLine();
+
+                        }
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
