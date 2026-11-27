@@ -937,10 +937,7 @@ while (true)
             }
             finally
             {
-                if (rs != null)
-                {
-                    rs.Close();
-                }
+                if (rs != null) rs.Close();
                 if (fs != null) fs.Close();
             }
             Console.Read();
