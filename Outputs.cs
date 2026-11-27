@@ -919,6 +919,33 @@ while (true)
             Console.Read();
 
             break;
+        case "34":
+            string path = @"C:\Users\mathe\Documents\repositories\EstudoEmCSharp\file1.txt";
+            FileStream fs = null;
+            StreamReader rs = null;
+            try
+            {
+                fs = new FileStream(path, FileMode.Open);
+                rs = new StreamReader(fs);
+                string line34 = rs.ReadLine();
+                Console.WriteLine(line34);
+
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("An error ocurred " + e.Message);
+            }
+            finally
+            {
+                if (rs != null)
+                {
+                    rs.Close();
+                }
+                if (fs != null) fs.Close();
+            }
+            Console.Read();
+
+            break;
         default:
             Console.WriteLine($"Classe '{className}' não encontrada.");
             break;
