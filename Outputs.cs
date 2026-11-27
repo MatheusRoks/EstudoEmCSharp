@@ -817,24 +817,25 @@ namespace EstudoEmCSharp
                         Console.ReadLine();
                         break;
                     case "31":
-                         try
-                               {Console.WriteLine("Número do quarto: ");
-                                int roomNumber = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Check-in date (DD/MM/YYYY): ");
-                                DateTime checkIn = DateTime.Parse(Console.ReadLine());
-                                Console.WriteLine("Check-out date (DD/MM/YYYY): ");
-                                DateTime checkOut = DateTime.Parse(Console.ReadLine());
-                                Reservation reservation = new Reservation(roomNumber, checkIn, checkOut);
-                                Console.WriteLine(reservation);
-                                Console.WriteLine();
-                                Console.WriteLine("Update Dates: ");
-                                Console.WriteLine("Check-in date (DD/MM/YYYY): ");
-                                DateTime checkInN = DateTime.Parse(Console.ReadLine());
-                                Console.WriteLine("Check-out date (DD/MM/YYYY): ");
-                                DateTime checkOutN = DateTime.Parse(Console.ReadLine());
-                                reservation.UpdateDates(checkInN, checkOutN);
-                                Console.WriteLine(reservation);
-                                Console.ReadLine();
+                        try
+                        {
+                            Console.WriteLine("Número do quarto: ");
+                            int roomNumber = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Check-in date (DD/MM/YYYY): ");
+                            DateTime checkIn = DateTime.Parse(Console.ReadLine());
+                            Console.WriteLine("Check-out date (DD/MM/YYYY): ");
+                            DateTime checkOut = DateTime.Parse(Console.ReadLine());
+                            Reservation reservation = new Reservation(roomNumber, checkIn, checkOut);
+                            Console.WriteLine(reservation);
+                            Console.WriteLine();
+                            Console.WriteLine("Update Dates: ");
+                            Console.WriteLine("Check-in date (DD/MM/YYYY): ");
+                            DateTime checkInN = DateTime.Parse(Console.ReadLine());
+                            Console.WriteLine("Check-out date (DD/MM/YYYY): ");
+                            DateTime checkOutN = DateTime.Parse(Console.ReadLine());
+                            reservation.UpdateDates(checkInN, checkOutN);
+                            Console.WriteLine(reservation);
+                            Console.ReadLine();
                         }
                         catch (DomainExcpetion e)
                         {
@@ -842,6 +843,62 @@ namespace EstudoEmCSharp
                             Console.ReadLine();
 
                         }
+                        break;
+                    case "32":
+                        Console.WriteLine("Cadastro da conta bancária");
+
+                        Console.Write("Nome do titular: ");
+                        string bankHolder32 = Console.ReadLine();
+
+                        Console.Write("Número da conta: ");
+                        int bankNumber32 = int.Parse(Console.ReadLine());
+
+                        Console.Write("Saldo inicial: ");
+                        double initialBalance32 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                        Console.Write("Limite de saque: ");
+                        double withdrawLimit32 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                        BankAccount bankAccount32 = new BankAccount(
+                            bankHolder32,
+                            bankNumber32,
+                            initialBalance32,
+                            withdrawLimit32
+                        );
+
+                        Console.WriteLine(bankAccount32);
+
+                        Console.Write("\nDigite o valor do depósito: ");
+                        double depositValue32 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                        try
+                        {
+                            bankAccount32.Deposit(depositValue32);
+                            Console.WriteLine("Depósito realizado!");
+                        }
+                        catch (ValueException e)
+                        {
+                            Console.WriteLine($"Erro no depósito: {e.Message}");
+                        }
+
+                        Console.Write("\nDigite o valor do saque: ");
+                        double withdrawValue32 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                        try
+                        {
+                            bankAccount32.Withdraw(withdrawValue32);
+                            Console.WriteLine("Saque realizado!");
+                        }
+                        catch (ValueException e)
+                        {
+                            Console.WriteLine($"Erro no saque: {e.Message}");
+                        }
+
+                        Console.WriteLine("\nDados atualizados:");
+                        Console.WriteLine($"Titular: {bankAccount32.Holder}");
+                        Console.WriteLine($"Saldo: {bankAccount32.Balance:F2}");
+
+                        Console.ReadLine();
                         break;
                     default:
                         Console.WriteLine($"Classe '{className}' não encontrada.");
